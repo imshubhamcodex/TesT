@@ -13,30 +13,25 @@
       href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
+    <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
-      <nav></nav>
-
+      <nav>
+        <img src="./logo.png">
+      </nav>
       <div class="main">
         <div class="main-text">
           <h1 class="text-line-1">
-            Artist. Digital <span class="highlight"> Craftsman.</span>
+            Artist. Digital Craftsman.:User Experience Designer.:& More
           </h1>
-          <h1 class="text-line-2">
-            User Experien<span class="highlight">ce Designer.</span>
-          </h1>
-          <h1 class="text-line-3">& More</h1>
-          <p>
-            I'm Akshay, an oridinary designer from India who creates enga<span
-              class="highlight"
-              >ging interface and functional</span
-            >
+          <p class="below-para">
+            I'm Akshay, an oridinary designer from India who creates engaging
+            interface and functional
             <br />
             experiences that make peoples's lives simple.
           </p>
         </div>
-
         <div class="main-img">
           <div class="img-div">
             <div class="overlay-div"></div>
@@ -46,191 +41,6 @@
       </div>
     </div>
 
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      h1,
-      p {
-        font-family: "PT Serif", serif;
-        transition: all 0.2s ease-in-out;
-      }
-      h1 {
-        font-size: 65px;
-        line-height: 0.6;
-        transition: all 0.2s ease-in-out;
-      }
-      .text-line-1,
-      .text-line-3 {
-        color: #999999;
-      }
-      .text-line-2 {
-        color: #002f47;
-      }
-      p {
-        color: #595959;
-      }
-      .container {
-        margin: 0;
-        padding: 0;
-        display: block;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        background-color: #fbf9f6;
-      }
-      .main {
-        width: 70vw;
-        height: 100%;
-        display: block;
-        padding: 0;
-        margin: 0 auto;
-        position: relative;
-      }
-      .main-text {
-        position: absolute;
-        padding-top: 20vh;
-        z-index: 1;
-      }
-      .main-img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-top: 20vh;
-        width: 300px;
-        height: 400px;
-        z-index: 0;
-        overflow: hidden;
-      }
-      .overlay-div {
-        width: 300px;
-        height: 400px;
-        background: rgba(0, 0, 0, 0.3);
-        position: absolute;
-      }
-      .img-small {
-        width: 300px;
-        height: 400px;
-      }
-      .img-div {
-        animation: circle 3s infinite ease-in-out;
-      }
-
-      .gradient-background {
-        -webkit-background-clip: text !important;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: all 0.5s ease;
-      }
-
-      @keyframes circle {
-        0% {
-          transform: translateX(60px) translateY(460px) rotate(-20deg);
-        }
-
-        25% {
-          transform: translateX(0px) translateY(0px) rotate(0deg);
-        }
-
-        85% {
-          transform: translateX(0px) translateY(0px) rotate(0deg);
-        }
-
-        100% {
-          transform: translateX(120px) translateY(-460px) rotate(25deg);
-        }
-      }
-    </style>
-
-    <script>
-      window.onload = () => {
-        let currentImageIndex = 0;
-        const images = ["img2.png", "img3.png", "img4.png", "img1.png"];
-        const imgDiv = document.querySelector(".img-div");
-        const img = document.querySelector(".img-small");
-        const highlightText = document.getElementsByClassName("highlight");
-        const mainText = document.getElementsByClassName("main-text")[0];
-        const mainImg = document.getElementsByClassName("main-img")[0];
-        const overlappingArea = calculateOverlapArea(mainText, mainImg);
-        const totalAreaMainText = mainText.clientWidth * mainText.clientHeight;
-        const totalAreaMainImg = mainImg.clientWidth * mainImg.clientHeight;
-
-        const totalOverlapArea = Math.min(totalAreaMainText, totalAreaMainImg);
-        const gradientPercentage = (overlappingArea / totalOverlapArea) * 100;
-
-        const gradient1 = `linear-gradient(to left, #ffffff ${
-          gradientPercentage - 5
-        }%, #999999 0%)`;
-        const gradient2 = `linear-gradient(to left, #ffffff ${gradientPercentage}%, #002f47 0%)`;
-
-        highlightText[0].style.background = gradient1;
-        highlightText[0].classList.add("gradient-background");
-
-        highlightText[1].style.background = gradient2;
-        highlightText[1].classList.add("gradient-background");
-
-        if (overlappingArea > 33714) {
-          highlightText[2].style.background = gradient2;
-          highlightText[2].classList.add("gradient-background");
-          highlightText[2].style.color = "white";
-        }
-
-        imgDiv.addEventListener("animationiteration", () => {
-          currentImageIndex = (currentImageIndex + 1) % images.length;
-          img.src = images[currentImageIndex];
-          console.log(event.elapsedTime);
-
-          setTimeout(() => {
-            console.log("start");
-            highlightText[0].style.background = gradient1;
-            highlightText[0].classList.add("gradient-background");
-            highlightText[1].style.background = gradient2;
-            highlightText[1].classList.add("gradient-background");
-            if (overlappingArea > 33714) {
-              highlightText[2].style.background = gradient2;
-              highlightText[2].classList.add("gradient-background");
-              highlightText[2].style.color = "white";
-            }
-          }, 0.5 * 1000);
-
-          setTimeout(() => {
-            highlightText[0].parentNode.innerHTML = `
-            Artist. Digital <span class="highlight"> Craftsman.</span>
-            `;
-
-            highlightText[1].parentNode.innerHTML = `
-            User Experien<span class="highlight">ce Designer.</span>
-            `;
-
-            highlightText[2].parentNode.innerHTML = `
-            I'm Akshay, an oridinary designer from India who creates enga<span
-              class="highlight">ging interface and functional</span>
-            <br />
-            experiences that make peoples's lives simple.
-            `;
-
-            console.log("end");
-          }, 2.7 * 1000);
-        });
-      };
-
-      function calculateOverlapArea(element1, element2) {
-        const rect1 = element1.getBoundingClientRect();
-        const rect2 = element2.getBoundingClientRect();
-
-        const overlapLeft = Math.max(rect1.left, rect2.left);
-        const overlapTop = Math.max(rect1.top, rect2.top);
-        const overlapRight = Math.min(rect1.right, rect2.right);
-        const overlapBottom = Math.min(rect1.bottom, rect2.bottom);
-
-        const overlapWidth = Math.max(0, overlapRight - overlapLeft);
-        const overlapHeight = Math.max(0, overlapBottom - overlapTop);
-
-        return overlapWidth * overlapHeight;
-      }
-    </script>
+    <script src="./app.js"></script>
   </body>
 </html>
